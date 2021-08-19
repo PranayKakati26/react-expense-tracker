@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import NewExpense from './components/NewExpense/NewExpense';
-import Expenses from './components/Expenses/Expenses';
+import { useState } from "react";
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
 
 const Dummy_Expenses = [
   {
@@ -24,25 +24,23 @@ const Dummy_Expenses = [
   },
 ];
 
+const App = () => {
+  const [expenses, setExpenses] = useState(Dummy_Expenses);
 
-const App =() => {
-  const [expenses , setExpenses] = useState(Dummy_Expenses);
-
-  const addExpenseHandler = expense => {
-    
-      console.log(expense);
-      setExpenses(prevExpense => {
-        return [expense, ...prevExpense]
-      });
+  const addExpenseHandler = (expense) => {
+    console.log(expense);
+    setExpenses((prevExpense) => {
+      return [expense, ...prevExpense];
+    });
   };
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
-      <p>This is also visible</p>
-     <Expenses items={expenses}/>
+      <NewExpense onAddExpense={addExpenseHandler} />
+
+     <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
